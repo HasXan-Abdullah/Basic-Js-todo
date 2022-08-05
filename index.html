@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Pure Js</title>
+    <style>
+         .checked{
+            text-decoration: line-through;
+            cursor:not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        Todo App in JavaScript
+    </h1>
+
+    <input id="txt" type="text" placeholder="Any Todo">
+    <button onclick="addTodo()">Add </button>
+    <ul id="mylist">
+
+    
+    
+</ul>
+    <script>
+        // adding todos
+        
+        function addTodo(){
+            var text =document.getElementById('txt').value;
+            var item =document.createElement("li");
+            var t = document.createTextNode(text);
+            // verifying
+            if (text=='') {
+                alert("enter todo");
+            }
+            else{
+            item.appendChild(t);
+            document.getElementById('mylist').appendChild(item)
+           }
+            
+         // create  delete button with item
+            var btn = document.createElement('button');
+            var btnTxt =document.createTextNode("Delete");
+            btn.appendChild(btnTxt);
+            btn.style.marginLeft='2%';
+            item.appendChild(btn);
+            btn.addEventListener('click',()=>{
+              
+                    item.remove();
+                
+            })
+         // null input field
+            document.getElementById('txt').value="";
+        }
+
+      
+
+
+        //add check line to todo
+        
+            var list = document.querySelector('ul');
+            list.addEventListener('click',(e)=>{
+                if (e.target.tagName === 'LI') {
+                    e.target.classList.toggle('checked');
+                
+                }
+            },false)
+
+       
+        
+
+    </script>
+</body>
+</html>
